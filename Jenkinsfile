@@ -5,6 +5,7 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
+                        sh 'dotnet --version'
                         sh 'dotnet build'
                     } else {
                         bat 'dotnet build'
