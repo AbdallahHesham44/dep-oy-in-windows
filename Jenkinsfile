@@ -15,12 +15,15 @@ pipeline {
         }
         stage('Run') {
             steps {
-                script {
+                dir(ConsoleApp1)
+                {
+                    script {
                     if (isUnix()) {
                         sh 'dotnet run'
                     } else {
                         bat 'dotnet run'
                     }
+                }
                 }
             }
         }
