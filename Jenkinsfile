@@ -1,29 +1,27 @@
 pipeline {
     agent any
+
     stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/AbdallahHesham44/dep-oy-in-windows.git'
+            }
+        }
+        
         stage('Build') {
             steps {
                 script {
-                    if (isUnix()) {
-                        sh 'dotnet --version'
-                        sh 'dotnet build'
-                    } else {
-                        bat 'dotnet build'
-                    }
+                    // Build the project
+                    bat 'dotnet build ConsoleApp1/ConsoleApp1.csproj'
                 }
             }
         }
+        
         stage('Run') {
             steps {
-                dir(ConsoleApp1)
-                {
-                    script {
-                    if (isUnix()) {
-                        sh 'dotnet run'
-                    } else {
-                        bat 'dotnet run'
-                    }
-                }
+                script {
+                    // Run the project
+                    bat 'dotnet run --project ConsoleApp1/ConsoleApp1.csproj'
                 }
             }
         }
