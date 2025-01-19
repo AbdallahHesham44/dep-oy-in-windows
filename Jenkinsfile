@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        bat 'dotnet build ConsoleApp1/ConsoleApp1.csproj'
+                      //  bat 'dotnet build ConsoleApp1/ConsoleApp1.csproj'
                         bat 'dotnet publish -c Release -r win-x64 --self-contained -o ./publish' 
                     } catch (Exception e) {
                         error "Build failed: ${e.message}"
@@ -28,7 +28,7 @@ pipeline {
                        // bat 'dotnet run --project ConsoleApp1/ConsoleApp1.csproj'
              
               bat '''
-                start /B dotnet .\\publish\\ConsoleApp1.dll > app.log 2>&1
+                start /B  .\\publish\\ConsoleApp1.exe > app.log 2>&1
                 echo %ERRORLEVEL%
                 '''
                     } catch (Exception e) {
