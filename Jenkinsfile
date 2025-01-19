@@ -30,7 +30,7 @@ pipeline {
              
      if not exist "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs" mkdir "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs"
        
-               start /B dotnet .\\publish\\ConsoleApp1.dll 
+               start /B dotnet .\\publish\\ConsoleApp1.exe 
         
                 '''
                     } catch (Exception e) {
