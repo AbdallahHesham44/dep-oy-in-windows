@@ -22,6 +22,7 @@ pipeline {
         }
 
         stage('Run') {
+           dir(publish){
             steps {
                 script {
                     try {
@@ -29,15 +30,16 @@ pipeline {
              bat '''
              
      if not exist "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs" mkdir "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs"
-
-       start /b .\\publish\\ConsoleApp1.exe
-               start /B dotnet .\\publish\\ConsoleApp1.dll 
+        start ConsoleApp1.exe
+       //start /b .\\publish\\ConsoleApp1.exe
+         //      start /B dotnet ConsoleApp1.dll 
         
                 '''
                     } catch (Exception e) {
                         error "Run failed: ${e.message}"
                     }
                 }
+            }
             }
         }
     }
