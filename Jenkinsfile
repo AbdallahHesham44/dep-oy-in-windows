@@ -28,7 +28,9 @@ pipeline {
                        // bat 'dotnet run --project ConsoleApp1/ConsoleApp1.csproj'
              
               bat '''
+              echo """""""""""""""""""""""""""""""""""""
               cd
+              echo """""""""""""""""""""""""""""""""""""
                 start   .\\publish\\ConsoleApp1.exe > app.log 2>&1
                 echo %ERRORLEVEL%
                 '''
