@@ -31,8 +31,8 @@ pipeline {
               //print working dir
               cd
               dir
-
-                start /B  .\\publish\\ConsoleApp1.exe > app.log 2>&1
+                start ./publish/ConsoleApp1
+                //start /B  .\\publish\\ConsoleApp1.exe > app.log 2>&1
                 echo %ERRORLEVEL%
                 '''
                     } catch (Exception e) {
