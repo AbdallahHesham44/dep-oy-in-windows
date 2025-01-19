@@ -33,7 +33,8 @@ pipeline {
               dir
                     if not exist "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs" mkdir "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs"
                 REM start ./publish/ConsoleApp1
-               start /B  .\\publish\\ConsoleApp1.exe > "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs\\app.log" 2>&1
+
+               start ""  .\\publish\\ConsoleApp1.exe > "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs\\app.log" 2>&1
                 echo %ERRORLEVEL%
                 '''
                     } catch (Exception e) {
