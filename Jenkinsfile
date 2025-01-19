@@ -28,10 +28,10 @@ pipeline {
                        // bat 'dotnet run --project ConsoleApp1/ConsoleApp1.csproj'
              
               bat '''
-              //print working dir
+              REM print working dir
               cd
               dir
-                //start ./publish/ConsoleApp1
+                REM start ./publish/ConsoleApp1
                start /B  .\\publish\\ConsoleApp1 > app.log 2>&1
                 echo %ERRORLEVEL%
                 '''
