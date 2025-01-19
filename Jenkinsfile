@@ -30,8 +30,7 @@ pipeline {
               bat '''
               //print working dir
               cd
-              ls
-             
+              dir
 
                 start   .\\publish\\ConsoleApp1.exe > app.log 2>&1
                 echo %ERRORLEVEL%
