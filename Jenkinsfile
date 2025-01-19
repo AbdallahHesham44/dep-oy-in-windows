@@ -12,8 +12,7 @@ pipeline {
             steps {
                 script {
                     try {
-                      //  bat 'dotnet build ConsoleApp1/ConsoleApp1.csproj'
-                        bat 'dotnet publish -c Release -r win-x64 --self-contained -o ..\\publish' 
+                        bat 'dotnet publish -c Release -r win-x64 --self-contained -o publish'
                     } catch (Exception e) {
                         error "Build failed: ${e.message}"
                     }
@@ -22,27 +21,25 @@ pipeline {
         }
 
         stage('Run') {
-           dir(publish){
             steps {
-                script {
-                    try {
-                       // bat 'dotnet run --project ConsoleApp1/ConsoleApp1.csproj'
-             bat '''
-             
-     if not exist "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs" mkdir "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs"
-        start ConsoleApp1.exe
-       //start /b .\\publish\\ConsoleApp1.exe
-         //      start /B dotnet ConsoleApp1.dll 
-        
-                '''
-                    } catch (Exception e) {
-                        error "Run failed: ${e.message}"
+                dir('publish') {
+                    script {
+                        try {
+                            bat '''
+                            if not exist "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs" (
+                                mkdir "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs"
+                            )
+                            start /b ConsoleApp1.exe
+                            '''
+                        } catch (Exception e) {
+                            error "Run failed: ${e.message}"
+                        }
                     }
                 }
             }
-            }
         }
     }
+
     post {
         success {
             echo 'Pipeline completed successfully. Application is running in the background.'
