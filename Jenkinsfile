@@ -13,7 +13,7 @@ pipeline {
                 script {
                     try {
                       //  bat 'dotnet build ConsoleApp1/ConsoleApp1.csproj'
-                        bat 'dotnet publish -c Release -r win-x64 --self-contained -o ./publish' 
+                        bat 'dotnet publish -c Release -r win-x64 --self-contained -o ..\\publish' 
                     } catch (Exception e) {
                         error "Build failed: ${e.message}"
                     }
@@ -27,16 +27,13 @@ pipeline {
                     try {
                        // bat 'dotnet run --project ConsoleApp1/ConsoleApp1.csproj'
              
-              bat '''
-              REM print working dir
-              cd
-              dir
+             
                     if not exist "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs" mkdir "C:\\Users\\Abdallah Hesham\\source\\repos\\ConsoleApp1\\logs"
-                REM start ./publish/ConsoleApp1
+               
 
-               start ""  .\\publish\\ConsoleApp1.exe 
+               
                start /B dotnet .\\publish\\ConsoleApp1.dll 
-                echo %ERRORLEVEL%
+        
                 '''
                     } catch (Exception e) {
                         error "Run failed: ${e.message}"
